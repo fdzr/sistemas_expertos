@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+	
+{% block content %}
+	<div class="row">
+		<div ng-view>
+			
+				<div class="panel-body" ng-controller="TicketController">
+					<div ng-repeat="ticket in tickets| filter:titulo| filter:descripcion|filter:estado|filter:fecha">
+						<div class="panel panel-success">
+							<div class="panel-heading">[[ ticket.titulo ]]</div>
+							<div class="panel-body">
+								<strong><em>Descripci&oacute;n: </em></strong>[[ticket.descripcion]]<br>
+								<strong><em>Estado: </em></strong>[[ticket.estado]]<br>
+								<strong><em>Creado: </em></strong>[[ticket.creado|date]]<br>
+							</div>
+						</div>
+					</div>			
+				</div>
+			
+		</div>
+		
+	</div>
+{% endblock content %}
+
+{% block filtro %}
+	<div class="col-md-4" style="margin-top:16px">
+		{% if ticket %}
+			{% include "filtro.html" %}						
+		{% endif %}
+	</div>			
+{% endblock filtro %}
+
+
+
+{% block js %}
+
+{% endblock js %}
+

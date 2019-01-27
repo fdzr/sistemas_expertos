@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel panel-success">
+	<div class="panel-heading">Agregar ticket</div>
+	<div class="panel-body" ng-controller='AddTicketController'>
+		<form method="POST" name="formulario" novalidate ng-submit="save()">{% csrf_token %}
+			<div class="form-group">
+				<label for="">T&iacute;tulo</label>
+				<input id="inputTitulo" type="text" class="form-control" placeholder="Titulo" ng-model="titulo" required>
+				<div ng-show="!titulo && formulario.$submitted" class="alert alert-warning">Este campo es obligatorio</div>
+			</div>	
+			<div class="form-group">
+				<label for="">Descripci&oacute;n</label>
+				<input id="inputDescripcion" type="text" class="form-control" placeholder="Descripcion" ng-model="descripcion" required>
+				<div ng-show="!descripcion && formulario.$submitted" class="alert alert-warning">Este campo es obligatorio</div>
+			</div>
+			<div class="form-group">
+				<label for="">Estado</label>
+				<select id="selectEstado" type="text" class="form-control" placeholder="Estado" ng-model="estado" required>
+					<option value="">-----</option>
+					<option value="abierto">Abierto</option>
+					<option value="pendiente">Pendiente</option>
+					<option value="en_proceso">En Proceso</option>
+					<option value="resuelto">Resuelto</option>
+					<option value="cerrado">Cerrado</option>
+				</select>
+				<div ng-show="!estado && formulario.$submitted" class="alert alert-warning">Este campo es obligatorio</div>
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-success" value="Guardar" />
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock content %}
+
+{% block filtro %}
+	
+{% endblock filtro %}

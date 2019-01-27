@@ -13,4 +13,5 @@ class TicketListAPIView(ListAPIView):
 class CreateTicketAPIView(CreateAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketCreateSerializer
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [IsAuthenticated, ]  #Aqui se puede agregar el permiso personalizado que esta implementado
+    										  #en permission.py llamado PermisoPersonalizado
